@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta
+      name="description"
+      content="Rocket Survivor: Meteor Storm - NurGame Edition"
+    />
+
+    <title>Rocket Avoider - NurGame</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bungee&family=Nunito:wght@400;700;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              bungee: ["Bungee", "cursive"],
+              nunito: ["Nunito", "sans-serif"],
+            },
+            colors: {
+              "space-dark": "#121212",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        touch-action: manipulation;
+        overflow-x: hidden;
+      }
+      canvas {
+        touch-action: none;
+      }
+
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 3px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: rgba(194, 174, 103, 0.4);
+        border-radius: 10px;
+      }
+
+      #rocket-leaderboard-list li {
+        animation: slideIn 0.3s ease-out forwards;
+        list-style: none;
+      }
+
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateX(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+    </style>
+  </head>
+
+  <body
+    class="bg-space-dark text-white min-h-screen font-nunito selection:bg-blue-500/30"
+  >
+    <main
+      id="main-content"
+      class="min-h-screen w-full bg-cover bg-center bg-no-repeat bg-fixed flex items-center justify-center p-4"
+      style="
+        background-image: linear-gradient(
+            to bottom,
+            rgba(18, 18, 18, 0.7),
+            rgba(18, 18, 18, 0.9)
+          ),
+          url('images/rocket-bg.webp');
+      "
+    >
+      <article
+        class="relative w-full max-w-lg bg-black/40 backdrop-blur-xl p-6 md:p-8 rounded-3xl border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.5)]"
+      >
+        <header class="text-center mb-10">
+          <h1
+            class="text-3xl md:text-4xl font-black font-bungee tracking-tight bg-gradient-to-r from-orange-400 to-yellow-300 bg-clip-text text-transparent"
+          >
+            <i class="fa-solid fa-meteor text-orange-500 animate-pulse mr-2"></i
+            >ROCKET AVOIDER
+          </h1>
+          <p
+            class="text-[10px] font-black tracking-[0.3em] text-yellow-500/50 mt-2 uppercase font-bungee"
+          >
+            by NurGame
+          </p>
+        </header>
+
+        <section id="nickname-setup" class="space-y-6">
+          <div class="space-y-2 text-center">
+            <label
+              class="text-xs font-bold uppercase tracking-widest text-blue-400/80"
+              >Identify Yourself, Pilot</label
+            >
+            <input
+              type="text"
+              id="nickname-input"
+              class="w-full bg-white/5 border border-white/10 rounded-2xl p-4 text-center text-xl focus:border-blue-500 outline-none transition-all"
+              placeholder="Callsign..."
+              maxlength="15"
+            />
+          </div>
+          <button
+            id="start-rocket-btn"
+            class="w-full py-5 bg-blue-600 hover:bg-blue-500 text-white font-black rounded-2xl transition-all active:scale-95 shadow-[0_0_20px_rgba(37,99,235,0.4)] flex items-center justify-center gap-3 tracking-widest uppercase"
+          >
+            <i class="fas fa-rocket"></i> INITIALIZE
+          </button>
+        </section>
+
+        <section
+          id="rocket-instructions"
+          class="hidden space-y-6 animate-in fade-in zoom-in duration-300"
+        >
+          <div class="text-center space-y-2">
+            <h2 class="text-xl font-bold italic uppercase">Mission Briefing</h2>
+            <p class="text-white/60 text-xs">
+              Avoid asteroids. Stay alive. Commander:
+            </p>
+            <span
+              id="current-player-name"
+              class="text-xl font-bold font-bungee text-yellow-400 block italic underline"
+              >---</span
+            >
+          </div>
+          <button
+            id="start-round-btn"
+            class="w-full py-5 bg-yellow-500 hover:bg-yellow-400 text-black font-black rounded-2xl transition-all active:scale-95 tracking-[0.2em] uppercase"
+          >
+            ENGAGE ENGINES
+          </button>
+        </section>
+
+        <section id="game-display" class="hidden space-y-4">
+          <canvas
+            id="rocket-canvas"
+            width="400"
+            height="500"
+            class="w-full h-auto bg-black/60 rounded-2xl border border-white/10"
+          ></canvas>
+
+          <div
+            class="bg-black/60 py-3 rounded-2xl border border-white/5 text-center"
+          >
+            <span
+              id="rocket-score"
+              class="text-3xl font-mono text-yellow-400 font-bold"
+              >0</span
+            >
+          </div>
+
+          <div class="flex md:hidden gap-3 h-24">
+            <button
+              id="btn-left"
+              class="flex-1 bg-white/10 border border-white/20 rounded-2xl active:bg-blue-500/40 transition-colors"
+            >
+              <i class="fas fa-arrow-left text-2xl"></i>
+            </button>
+            <button
+              id="btn-right"
+              class="flex-1 bg-white/10 border border-white/20 rounded-2xl active:bg-blue-500/40 transition-colors"
+            >
+              <i class="fas fa-arrow-right text-2xl"></i>
+            </button>
+          </div>
+        </section>
+
+        <section id="dodge-game-over" class="hidden text-center py-6 space-y-6">
+          <h2 class="text-4xl font-black text-red-600 font-bungee">CRASHED!</h2>
+          <p
+            id="final-score-message"
+            class="text-white/60 uppercase font-bold text-sm tracking-widest"
+          ></p>
+          <button
+            id="play-again-rocket-btn"
+            class="px-8 py-4 bg-white text-black font-black rounded-full hover:bg-gray-200 transition-all active:scale-95 uppercase text-xs"
+          >
+            New Craft
+          </button>
+        </section>
+
+        <section class="mt-8 pt-6 border-t border-white/10 space-y-6">
+          <div>
+            <h4
+              class="text-[10px] font-black uppercase tracking-[0.3em] text-yellow-500/50 mb-3 italic"
+            >
+              Top Pilots
+            </h4>
+            <ul
+              id="rocket-leaderboard-list"
+              class="space-y-2 max-h-32 overflow-y-auto pr-2 custom-scrollbar"
+            ></ul>
+          </div>
+
+          <div
+            class="flex items-center justify-between pt-4 border-t border-white/5"
+          >
+            <button
+              onclick="location.reload()"
+              class="text-[10px] font-black uppercase tracking-widest text-white/40 hover:text-red-500 transition-all flex items-center gap-2 group"
+            >
+              <span
+                class="w-2 h-2 bg-red-600 rounded-full group-hover:animate-ping shadow-[0_0_8px_rgba(220,38,38,0.8)]"
+              ></span>
+              Stop Playing
+            </button>
+
+            <button
+              id="musicToggle"
+              class="w-10 h-10 flex items-center justify-center bg-white/5 hover:bg-white/10 rounded-full border border-white/10 transition-all shadow-lg"
+            >
+              <i
+                id="musicIcon"
+                class="fas fa-volume-up text-sm text-yellow-500/80"
+              ></i>
+            </button>
+          </div>
+        </section>
+
+        <audio id="gameMusic" loop>
+          <source src="audio/rocket-396890.mp3" type="audio/mpeg" />
+        </audio>
+      </article>
+    </main>
+
+    <footer class="bg-black py-12 px-8 text-center border-t border-white/5">
+      <h3 class="text-yellow-400 font-bungee text-lg mb-4">NurGame</h3>
+      <div class="flex gap-6 justify-center text-xl mb-6">
+        <a
+          href="https://github.com/nurjamilahh"
+          class="text-gray-500 hover:text-white"
+          ><i class="fab fa-github"></i
+        ></a>
+        <a
+          href="https://www.linkedin.com/in/nur-jamilah-harahap"
+          class="text-gray-500 hover:text-white"
+          ><i class="fab fa-linkedin-in"></i
+        ></a>
+      </div>
+      <p class="text-[9px] text-white/10 uppercase tracking-widest">
+        © 2026 Nurjam Projects
+      </p>
+    </footer>
+
+    <script type="module" src="dist/rocket-logic.js"></script>
+
+    <script>
+      window.addEventListener("load", () => {
+        const btnLeft = document.getElementById("btn-left");
+        const btnRight = document.getElementById("btn-right");
+
+        const simulateKey = (keyCode, type) => {
+          window.dispatchEvent(
+            new KeyboardEvent(type, {
+              keyCode: keyCode,
+              which: keyCode,
+              key: keyCode === 37 ? "ArrowLeft" : "ArrowRight",
+            })
+          );
+        };
+
+        btnLeft.addEventListener("touchstart", (e) => {
+          e.preventDefault();
+          simulateKey(37, "keydown");
+        });
+        btnLeft.addEventListener("touchend", (e) => {
+          e.preventDefault();
+          simulateKey(37, "keyup");
+        });
+
+        btnRight.addEventListener("touchstart", (e) => {
+          e.preventDefault();
+          simulateKey(39, "keydown");
+        });
+        btnRight.addEventListener("touchend", (e) => {
+          e.preventDefault();
+          simulateKey(39, "keyup");
+        });
+      });
+    </script>
+
+    <script
+      src="https://kit.fontawesome.com/6ed6c077fc.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

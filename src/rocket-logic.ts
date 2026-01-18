@@ -60,34 +60,43 @@ class RocketGame {
     if (!btnLeft || !btnRight) return;
 
     const simulateKey = (keyCode: number, type: string) => {
-      window.dispatchEvent(
-        new KeyboardEvent(type, {
-          keyCode: keyCode,
-          which: keyCode,
-          // Menggunakan e.code sesuai dengan logika gameLoop kamu
-          code: keyCode === 37 ? "ArrowLeft" : "ArrowRight",
-          key: keyCode === 37 ? "ArrowLeft" : "ArrowRight",
-          bubbles: true,
-        }),
-      );
+      const keyName = keyCode === 37 ? "ArrowLeft" : "ArrowRight";
+
+      const event = new KeyboardEvent(type, {
+        keyCode: keyCode,
+        which: keyCode,
+        code: keyName,
+        key: keyName,
+        bubbles: true,
+        cancelable: true,
+        view: window,
+      });
+
+      window.dispatchEvent(event);
     };
 
-    // Handler Touch untuk Mobile
-    btnLeft.addEventListener("touchstart", (e) => {
+    btnLeft.addEventListener("pointerdown", (e) => {
       e.preventDefault();
+      window.focus();
       simulateKey(37, "keydown");
     });
-    btnLeft.addEventListener("touchend", (e) => {
+    btnLeft.addEventListener("pointerup", (e) => {
       e.preventDefault();
       simulateKey(37, "keyup");
     });
+    btnLeft.addEventListener("pointerleave", () => {
+      simulateKey(37, "keyup");
+    });
 
-    btnRight.addEventListener("touchstart", (e) => {
+    btnRight.addEventListener("pointerdown", (e) => {
       e.preventDefault();
       simulateKey(39, "keydown");
     });
-    btnRight.addEventListener("touchend", (e) => {
+    btnRight.addEventListener("pointerup", (e) => {
       e.preventDefault();
+      simulateKey(39, "keyup");
+    });
+    btnRight.addEventListener("pointerleave", () => {
       simulateKey(39, "keyup");
     });
   }

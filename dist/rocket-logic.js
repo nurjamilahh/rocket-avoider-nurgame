@@ -71,6 +71,49 @@ class RocketGame {
         this.musicIcon = document.getElementById("musicIcon");
         this.initEventListeners();
         this.renderLeaderboard();
+        this.setupMobileControls();
+    }
+    setupMobileControls() {
+        const btnLeft = document.getElementById("btn-left");
+        const btnRight = document.getElementById("btn-right");
+        if (!btnLeft || !btnRight)
+            return;
+        const simulateKey = (keyCode, type) => {
+            const keyName = keyCode === 37 ? "ArrowLeft" : "ArrowRight";
+            const event = new KeyboardEvent(type, {
+                keyCode: keyCode,
+                which: keyCode,
+                code: keyName,
+                key: keyName,
+                bubbles: true,
+                cancelable: true,
+                view: window,
+            });
+            window.dispatchEvent(event);
+        };
+        btnLeft.addEventListener("pointerdown", (e) => {
+            e.preventDefault();
+            window.focus();
+            simulateKey(37, "keydown");
+        });
+        btnLeft.addEventListener("pointerup", (e) => {
+            e.preventDefault();
+            simulateKey(37, "keyup");
+        });
+        btnLeft.addEventListener("pointerleave", () => {
+            simulateKey(37, "keyup");
+        });
+        btnRight.addEventListener("pointerdown", (e) => {
+            e.preventDefault();
+            simulateKey(39, "keydown");
+        });
+        btnRight.addEventListener("pointerup", (e) => {
+            e.preventDefault();
+            simulateKey(39, "keyup");
+        });
+        btnRight.addEventListener("pointerleave", () => {
+            simulateKey(39, "keyup");
+        });
     }
     initEventListeners() {
         var _a, _b, _c;

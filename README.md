@@ -4,7 +4,7 @@
 | :----------------------------------------: | :--------------------------------------: |
 | ![Desktop Version](images/preview-web.png) | ![Mobile Version](images/preview-hp.png) |
 
-**[MAIN SEKARANG (LIVE DEMO)](hhttps://nurjamilahh.github.io/nur-rocket-game/)**
+**[MAIN SEKARANG (LIVE DEMO)](https://nurjamilahh.github.io/nur-rocket-game/)**
 
 **Rocket Avoider** adalah game arcade berbasis web yang menantang pemain untuk bertahan hidup di luar angkasa. Hindari meteor yang datang dan raih skor tertinggi!
 

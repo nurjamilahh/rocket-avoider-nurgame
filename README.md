@@ -7,7 +7,7 @@
 **[MAIN SEKARANG (LIVE DEMO)](https://nurjamilahh.github.io/rocket-avoider-nurgame/)**
 
 **Rocket Avoider** adalah casual game yang mudah dimainkan dan untuk segala umur, kita hindari meteor dan raih skor tertinggi 🚀! Saya pakai bentuk meteor yang seperti lampu, supaya lebih terang 😃.  <br><br>
-Game ini adalah salah satu kenang-kenangan saya belajar software engineering di kelas. <br><br> Kami ditugaskan memilih 3 (tiga) dari 4 (empat) game wajib dan ada satu game opsional. Dan ternyata inilah game yang paling saya sukai :smile:, karena mengingatkan saat saya memangku anak-anakku yang masih balita, bermain game semacam ini di PC jangkrik, dengan batu-batu meteor berjatuhan ke arah pesawat antariksa, yang berapi dan makin cepat jika levelnya semakin tinggi. Saat menyusun code game ini, saya sedang menanti cucu kedua. Buat saya, ini adalah suatu takdir yang aneh sekaligus sangat menyenangkan! <br><br> Demi meningkatkan keamanan bermain, sudah saya tambahkan scurity code. Audio game: Retro Arcade Game Music dari HitsLab.  
+Game ini adalah salah satu kenang-kenangan saya belajar software engineering di kelas. Kami ditugaskan memilih 3 (tiga) dari 4 (empat) game wajib dan ada satu game opsional. Dan ternyata inilah game yang paling saya sukai :smile:. <br><br> Demi meningkatkan keamanan bermain, sudah saya tambahkan security code. Audio game: Retro Arcade Game Music dari HitsLab.  
 
 
 ## 🛠️ Teknologi yang Digunakan

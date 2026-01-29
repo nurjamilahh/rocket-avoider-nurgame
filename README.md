@@ -4,9 +4,11 @@
 | :----------------------------------------: | :--------------------------------------: |
 | ![Desktop Version](images/preview-web.png) | ![Mobile Version](images/preview-hp.png) |
 
-**[MAIN SEKARANG (LIVE DEMO)](https://nurjamilahh.github.io/nur-rocket-game/)**
+**[MAIN SEKARANG (LIVE DEMO)](https://nurjamilahh.github.io/rocket-avoider-nurgame/)**
 
-**Rocket Avoider** adalah game arcade berbasis web yang menantang pemain untuk bertahan hidup di luar angkasa. Hindari meteor yang datang dan raih skor tertinggi!
+**Rocket Avoider** adalah casual game yang mudah dimainkan dan untuk segala umur, kita hindari meteor dan raih skor tertinggi 🚀! Saya pakai bentuk meteor yang seperti lampu, supaya lebih terang 😃.  <br><br>
+Game ini adalah salah satu kenang-kenangan saya belajar software engineering di kelas. <br><br> Kami ditugaskan memilih 3 (tiga) dari 4 (empat) game wajib dan ada satu game opsional. Dan ternyata inilah game yang paling saya sukai :smile:, karena mengingatkan saat saya memangku anak-anakku yang masih balita, bermain game semacam ini di PC jangkrik, dengan batu-batu meteor berjatuhan ke arah pesawat antariksa, yang berapi dan makin cepat jika levelnya semakin tinggi. Saat menyusun code game ini, saya sedang menanti cucu kedua. Buat saya, ini adalah suatu takdir yang aneh sekaligus sangat menyenangkan! <br><br> Demi meningkatkan keamanan bermain, sudah saya tambahkan scurity code. Audio game: Retro Arcade Game Music dari HitsLab.  
+
 
 ## 🛠️ Teknologi yang Digunakan
 
@@ -43,7 +45,7 @@ Keamanan data pemain adalah prioritas dalam pengembangan game ini:
 1. **Clone repository ini:**
 
    ```bash
-   git clone [https://github.com/nurjamilahh/nur-rocket-game.git](https://github.com/nurjamilahh/nur-rocket-game.git)
+   git clone [https://github.com/nurjamilahh/rocket-avoider-nurgame.git](https://github.com/nurjamilahh/rocket-avoider-nurgame.git)
    ```
 
 2. **Instal dependensi:**
@@ -74,7 +76,7 @@ Keamanan data pemain adalah prioritas dalam pengembangan game ini:
 
 ## 🚀 Pengembangan Berikutnya
 
-Proyek ini memerlukan pengembangan untuk memberikan pengalaman bermain yang lebih imersif. Berikut adalah beberapa fitur yang direncanakan:
+Game ini masih sangat memerlukan pengembangan agar pengalaman bermainnya makin seru! Beberapa fitur yang tampaknya menarik untuk dikembangkan:
 
 - [ ] **Animasi Efek Visual:** Implementasi sistem partikel untuk efek ledakan yang realistis saat roket bertabrakan dengan meteor.
 - [ ] **Mode Tingkat Kesulitan:** Penambahan opsi pemilihan level (Easy, Medium, Hard) di awal permainan untuk menyesuaikan kecepatan rintangan.
@@ -85,9 +87,8 @@ Proyek ini memerlukan pengembangan untuk memberikan pengalaman bermain yang lebi
 
 Saya sangat menghargai setiap saran dari para Pilot! Jika Anda menemukan kendala atau ingin menyampaikan feedback, silakan sampaikan ke:
 
-[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:worknurjam@gmail.com)
-[![WhatsApp](https://img.shields.io/badge/WhatsApp-Nurjam_Projects-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/6285782602672)
-Project Link: [https://github.com/nurjamilahh/nur-rocket-game](https://github.com/nurjamilahh/nur-rocket-game)
+* Email   : worknurjam@gmail.com
+* WhatsApp: [![WhatsApp](https://img.shields.io/badge/WhatsApp-Nurjam_Projects-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/6285782602672)
 
 ---
 
